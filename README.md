@@ -25,3 +25,25 @@ The goal of this project is to practice using SQL to retrieve and analyze relate
 ### Tools Used
 - SQL
 - SQLite
+
+SQL Example 1: LEFT JOIN — VIP Reservations
+
+Business question: How can we view all VIP members and their reservation details, including members without reservations?
+
+SELECT
+    vips.first_name,
+    vips.last_name,
+    reservations.hotel,
+    reservations.welcome_rsvp,
+    reservations.dinner_rsvp
+FROM vips
+LEFT JOIN reservations
+    ON vips.member_id = reservations.member_id;
+
+What I learned:
+
+- Used "LEFT JOIN" to retain all VIP records.
+- Matched VIPs and reservations using "member_id".
+- Identified VIPs without matching reservation records through NULL values.
+
+Result: The query returned all 30 VIP records, including members without matching reservations.
